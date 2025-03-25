@@ -5,7 +5,11 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", password: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,7 +20,7 @@ const SignUp = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/signup", // Replace with your backend URL
+        "https://urban-cuvj.onrender.com/api/auth/signup", // Replace with your backend URL
         formData
       );
 
@@ -35,7 +39,9 @@ const SignUp = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <ToastContainer />
       <div className="bg-white shadow-md rounded px-8 py-6 w-96">
-        <h2 className="text-2xl font-bold text-center mb-4">Create an Account</h2>
+        <h2 className="text-2xl font-bold text-center mb-4">
+          Create an Account
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700">Name</label>

@@ -59,7 +59,7 @@ const Detect = () => {
 
       // Fetch the processed image by sending the file again
       const imageResponse = await axios.post(
-        `https://urbanbackend-61cw.onrender.com/image/${detectResponse.data.image_url
+        `https://urban-cuvj.onrender.com/image/${detectResponse.data.image_url
           .split("/")
           .pop()}`,
         imageFormData,

@@ -43,7 +43,7 @@ const Solution = () => {
     try {
       // Send image and query to /analyze-traffic endpoint
       const response = await axios.post(
-        "https://urbanbackend-61cw.onrender.com/analyze-traffic/",
+        "https://urban-cuvj.onrender.com/analyze-traffic/",
         formData,
         {
           headers: {

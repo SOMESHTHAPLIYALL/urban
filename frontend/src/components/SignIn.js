@@ -16,7 +16,7 @@ const SignIn = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login", // Replace with your backend URL
+        "https://urban-cuvj.onrender.com/api/auth/login", // Replace with your backend URL
         formData
       );
 
@@ -39,7 +39,9 @@ const SignIn = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <ToastContainer />
       <div className="bg-white shadow-md rounded px-8 py-6 w-96">
-        <h2 className="text-2xl font-bold text-center mb-4">Sign in to your account</h2>
+        <h2 className="text-2xl font-bold text-center mb-4">
+          Sign in to your account
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700">Email Address</label>
@@ -76,7 +78,13 @@ const SignIn = () => {
             Sign In
           </button>
         </form>
-        <p className="text-center my-2">New here? <a href="/signup" className="text-green-800 hover:underline"> Sign up </a> </p>
+        <p className="text-center my-2">
+          New here?{" "}
+          <a href="/signup" className="text-green-800 hover:underline">
+            {" "}
+            Sign up{" "}
+          </a>{" "}
+        </p>
       </div>
     </div>
   );

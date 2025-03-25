@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaUser, FaCarSide, FaTrashAlt } from "react-icons/fa";
-import {toast, ToastContainer} from "react-toastify"
+import { toast, ToastContainer } from "react-toastify";
 const Dashboard = () => {
   const [hostedRides, setHostedRides] = useState([]);
   const [joinedRides, setJoinedRides] = useState([]);
@@ -11,9 +11,12 @@ const Dashboard = () => {
     const fetchUserCarpools = async () => {
       try {
         const token = localStorage.getItem("token"); // Get token from localStorage
-        const response = await axios.get("http://localhost:5000/api/carpool/user-carpools", {
-          headers: { Authorization: `Bearer ${token}` }, // Pass token in Authorization header
-        });
+        const response = await axios.get(
+          "https://urban-cuvj.onrender.com/api/carpool/user-carpools",
+          {
+            headers: { Authorization: `Bearer ${token}` }, // Pass token in Authorization header
+          }
+        );
         setHostedRides(response.data.hostedRides);
         setJoinedRides(response.data.joinedRides);
       } catch (error) {
@@ -28,11 +31,16 @@ const Dashboard = () => {
   const deleteCarpool = async (carpoolId) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/carpool/delete/${carpoolId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://urban-cuvj.onrender.com/api/carpool/delete/${carpoolId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
-      setHostedRides((prevRides) => prevRides.filter((ride) => ride._id !== carpoolId));
+      setHostedRides((prevRides) =>
+        prevRides.filter((ride) => ride._id !== carpoolId)
+      );
       toast.success("Carpool deleted successfully!");
     } catch (error) {
       console.error("Error deleting carpool:", error);
@@ -62,19 +70,27 @@ const Dashboard = () => {
         {hostedRides.length > 0 ? (
           <ul className="space-y-4">
             {hostedRides.map((ride) => (
-              <li key={ride._id} className="p-4 bg-white shadow-md rounded hover:shadow-lg transition">
+              <li
+                key={ride._id}
+                className="p-4 bg-white shadow-md rounded hover:shadow-lg transition"
+              >
                 <p>
-                  <strong>From:</strong> {ride.startLocation} <strong>To:</strong> {ride.endLocation}
+                  <strong>From:</strong> {ride.startLocation}{" "}
+                  <strong>To:</strong> {ride.endLocation}
                 </p>
                 <p>
-                  <strong>Date:</strong> {new Date(ride.date).toLocaleDateString()}{" "}
+                  <strong>Date:</strong>{" "}
+                  {new Date(ride.date).toLocaleDateString()}{" "}
                   <strong>Time:</strong> {ride.time}
                 </p>
                 <p>
                   <strong>Participants:</strong>{" "}
                   {ride.participants.length > 0
                     ? ride.participants.map((p) => (
-                        <span key={p._id} className="bg-gray-200 rounded-full px-2 py-1 text-sm mr-2">
+                        <span
+                          key={p._id}
+                          className="bg-gray-200 rounded-full px-2 py-1 text-sm mr-2"
+                        >
                           {p.name}
                         </span>
                       ))
@@ -104,12 +120,17 @@ const Dashboard = () => {
         {joinedRides.length > 0 ? (
           <ul className="space-y-4">
             {joinedRides.map((ride) => (
-              <li key={ride._id} className="p-4 bg-white shadow-md rounded hover:shadow-lg transition">
+              <li
+                key={ride._id}
+                className="p-4 bg-white shadow-md rounded hover:shadow-lg transition"
+              >
                 <p>
-                  <strong>From:</strong> {ride.startLocation} <strong>To:</strong> {ride.endLocation}
+                  <strong>From:</strong> {ride.startLocation}{" "}
+                  <strong>To:</strong> {ride.endLocation}
                 </p>
                 <p>
-                  <strong>Date:</strong> {new Date(ride.date).toLocaleDateString()}{" "}
+                  <strong>Date:</strong>{" "}
+                  {new Date(ride.date).toLocaleDateString()}{" "}
                   <strong>Time:</strong> {ride.time}
                 </p>
                 <p>
